@@ -10,8 +10,26 @@
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ProductVariant>().HasKey(p => new { p.ProductId, p.ProductTypeId });
 
-            modelBuilder.Entity<Category>().HasData(
+            var productTypes = new List<ProductType>()
+            {
+                 new ProductType { Id = 1, Name = "Default" },
+                    new ProductType { Id = 2, Name = "Paperback" },
+                    new ProductType { Id = 3, Name = "E-Book" },
+                    new ProductType { Id = 4, Name = "Audiobook" },
+                    new ProductType { Id = 5, Name = "Stream" },
+                    new ProductType { Id = 6, Name = "Blu-ray" },
+                    new ProductType { Id = 7, Name = "VHS" },
+                    new ProductType { Id = 8, Name = "PC" },
+                    new ProductType { Id = 9, Name = "PlayStation" },
+                    new ProductType { Id = 10, Name = "Xbox" }
+            };
+            modelBuilder.Entity<ProductType>().HasData(productTypes);
+
+
+            var categoryData = new List<Category>()
+            {
                 new Category()
                 {
                     Id= 1,
@@ -30,16 +48,17 @@
                     Name = "Games",
                     Url = "games"
                 }
-                );
-
-            modelBuilder.Entity<Product>().HasData(
-                 new Product()
+            };
+            modelBuilder.Entity<Category>().HasData(categoryData);
+            var productList = new List<Product>()
+            {
+                new Product()
                  {
                      Id = 1,
                      Title = "Birds of America",
                      Description = $"Birds of America (1998) is a collection of short stories by American writer Lorrie Moore. The stories in this collection originally appeared in The New Yorker, Elle, The New York Times, and The Paris Review. The story \"People Like That Are the Only People Here\" won an O. Henry Award in 1998. The book became a New York Times bestseller, a rarity for a short story collection. The book was included in the New York Times Book Review books of the year list in 1998.[1] Winner of the Irish Times international fiction prize. A Village Voice book of the year (1998). Winner of the Salon Book Award.",
                      ImageUrl = "https://upload.wikimedia.org/wikipedia/en/9/9b/BeingDead.jpg",
-                     Price = 9.99m,
+                    
                      CategoryId = 1
                  },
                  new Product()
@@ -48,7 +67,7 @@
                      Title = "The Love of a Good Woman",
                      Description = "The eight stories of this collection (one of which was originally published in Saturday Night; five others were originally published in The New Yorker) deal with Munro's typical themes: secrets, love, betrayal, and the stuff of ordinary lives.",
                      ImageUrl = "https://upload.wikimedia.org/wikipedia/en/8/8c/TheLoveOfAGoodWoman.jpg",
-                     Price = 5.99m,
+                     
                      CategoryId = 1
                  },
                  new Product()
@@ -57,7 +76,6 @@
                      Title = "Being Dead",
                      Description = "Its principal characters are married zoologists Joseph and Celice and their daughter Syl. The story tells of how Joseph and Celice, on a day trip to the dunes where they met as students, are murdered by an opportunistic thief. Their bodies lie undiscovered for several days, during the course of which their estranged daughter is made aware of their disappearance and, eventually, discovery. The novel dwells heavily on the themes of bodily decomposition and filial bereavement.",
                      ImageUrl = "https://upload.wikimedia.org/wikipedia/en/9/9b/BeingDead.jpg",
-                     Price = 3.99m,
                      CategoryId = 1
                  },
                  new Product
@@ -75,7 +93,7 @@
                         Title = "Back to the Future",
                         Description = "Back to the Future is a 1985 American science fiction film directed by Robert Zemeckis. Written by Zemeckis and Bob Gale, it stars Michael J. Fox, Christopher Lloyd, Lea Thompson, Crispin Glover, and Thomas F. Wilson. Set in 1985, the story follows Marty McFly (Fox), a teenager accidentally sent back to 1955 in a time-traveling DeLorean automobile built by his eccentric scientist friend Doctor Emmett \"Doc\" Brown (Lloyd). Trapped in the past, Marty inadvertently prevents his future parents' meeting—threatening his very existence—and is forced to reconcile the pair and somehow get back to the future.",
                         ImageUrl = "https://upload.wikimedia.org/wikipedia/en/d/d2/Back_to_the_Future.jpg",
-                       
+
                     },
                     new Product
                     {
@@ -110,7 +128,7 @@
                         Title = "Day of the Tentacle",
                         Description = "Day of the Tentacle, also known as Maniac Mansion II: Day of the Tentacle, is a 1993 graphic adventure game developed and published by LucasArts. It is the sequel to the 1987 game Maniac Mansion.",
                         ImageUrl = "https://upload.wikimedia.org/wikipedia/en/7/79/Day_of_the_Tentacle_artwork.jpg",
-                        
+
                     },
                     new Product
                     {
@@ -128,10 +146,130 @@
                         Description = "The Super Nintendo Entertainment System (SNES), also known as the Super NES or Super Nintendo, is a 16-bit home video game console developed by Nintendo that was released in 1990 in Japan and South Korea.",
                         ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/e/ee/Nintendo-Super-Famicom-Set-FL.jpg",
                     }
-                );
+            };
+            modelBuilder.Entity<Product>().HasData(productList);
+
+            var productVariants = new List<ProductVariant>()
+            {
+                     new ProductVariant
+               {
+                   ProductId = 1,
+                   ProductTypeId = 2,
+                   Price = 9.99m,
+                   OriginalPrice = 19.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 1,
+                   ProductTypeId = 3,
+                   Price = 7.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 1,
+                   ProductTypeId = 4,
+                   Price = 19.99m,
+                   OriginalPrice = 29.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 2,
+                   ProductTypeId = 2,
+                   Price = 7.99m,
+                   OriginalPrice = 14.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 3,
+                   ProductTypeId = 2,
+                   Price = 6.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 4,
+                   ProductTypeId = 5,
+                   Price = 3.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 4,
+                   ProductTypeId = 6,
+                   Price = 9.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 4,
+                   ProductTypeId = 7,
+                   Price = 19.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 5,
+                   ProductTypeId = 5,
+                   Price = 3.99m,
+               },
+               new ProductVariant
+               {
+                   ProductId = 6,
+                   ProductTypeId = 5,
+                   Price = 2.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 7,
+                   ProductTypeId = 8,
+                   Price = 19.99m,
+                   OriginalPrice = 29.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 7,
+                   ProductTypeId = 9,
+                   Price = 69.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 7,
+                   ProductTypeId = 10,
+                   Price = 49.99m,
+                   OriginalPrice = 59.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 8,
+                   ProductTypeId = 8,
+                   Price = 9.99m,
+                   OriginalPrice = 24.99m,
+               },
+               new ProductVariant
+               {
+                   ProductId = 9,
+                   ProductTypeId = 8,
+                   Price = 14.99m
+               },
+               new ProductVariant
+               {
+                   ProductId = 10,
+                   ProductTypeId = 1,
+                   Price = 159.99m,
+                   OriginalPrice = 299m
+               },
+               new ProductVariant
+               {
+                   ProductId = 11,
+                   ProductTypeId = 1,
+                   Price = 79.99m,
+                   OriginalPrice = 399m
+               }
+            };
+            modelBuilder.Entity<ProductVariant>().HasData(productVariants);
         }
+
+    
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<ProductType> ProductTypes { get; set; }
+        public DbSet<ProductVariant> ProductVariants { get; set; }
     }
 }

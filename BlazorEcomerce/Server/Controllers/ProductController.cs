@@ -30,5 +30,12 @@ private readonly IProductService _productService;
             var response = await _productService.GetProductAsync(productId);
             return Ok(response);
         }
+
+        [HttpGet("category/{categoryUrl}")]
+        public async Task<ActionResult<ServiceResponse<List<Product>>>> GetProductsByCategory(string categoryUrl)
+        {
+            var result = await _productService.GetProductsByCategoryAsync(categoryUrl);
+            return Ok(result);
+        }
     }
 }
