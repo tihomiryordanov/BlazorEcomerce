@@ -37,5 +37,27 @@ private readonly IProductService _productService;
             var result = await _productService.GetProductsByCategoryAsync(categoryUrl);
             return Ok(result);
         }
+
+
+        [HttpGet("search/{searchText}/{page}")]
+        public async Task<ActionResult<ServiceResponse<ProductSearchResultDTO>>> SearchProducts(string searchText, int page)
+        {
+            var result = await _productService.SearchProductsAsync(searchText, page);
+            return Ok(result);
+        }
+
+        [HttpGet("searchsuggestions/{searchText}")]
+        public async Task<ActionResult<ServiceResponse<List<string>>>> GetProductSearchSuggestions(string searchText)
+        {
+            var result = await _productService.GetProductSearchSuggestionsAsync(searchText);
+            return Ok(result);
+        }
+
+        [HttpGet("featured")]
+        public async Task<ActionResult<ServiceResponse<List<Product>>>> GetFeaturedProducts()
+        {
+            var result = await _productService.GetFeaturedProductsAsync();
+            return Ok(result);
+        }
     }
 }

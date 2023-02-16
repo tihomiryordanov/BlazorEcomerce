@@ -58,7 +58,7 @@
                      Title = "Birds of America",
                      Description = $"Birds of America (1998) is a collection of short stories by American writer Lorrie Moore. The stories in this collection originally appeared in The New Yorker, Elle, The New York Times, and The Paris Review. The story \"People Like That Are the Only People Here\" won an O. Henry Award in 1998. The book became a New York Times bestseller, a rarity for a short story collection. The book was included in the New York Times Book Review books of the year list in 1998.[1] Winner of the Irish Times international fiction prize. A Village Voice book of the year (1998). Winner of the Salon Book Award.",
                      ImageUrl = "https://upload.wikimedia.org/wikipedia/en/9/9b/BeingDead.jpg",
-                    
+                     Featured = true,
                      CategoryId = 1
                  },
                  new Product()
@@ -76,6 +76,7 @@
                      Title = "Being Dead",
                      Description = "Its principal characters are married zoologists Joseph and Celice and their daughter Syl. The story tells of how Joseph and Celice, on a day trip to the dunes where they met as students, are murdered by an opportunistic thief. Their bodies lie undiscovered for several days, during the course of which their estranged daughter is made aware of their disappearance and, eventually, discovery. The novel dwells heavily on the themes of bodily decomposition and filial bereavement.",
                      ImageUrl = "https://upload.wikimedia.org/wikipedia/en/9/9b/BeingDead.jpg",
+                     Featured = true,
                      CategoryId = 1
                  },
                  new Product
@@ -111,7 +112,7 @@
                         Title = "Half-Life 2",
                         Description = "Half-Life 2 is a 2004 first-person shooter game developed and published by Valve. Like the original Half-Life, it combines shooting, puzzles, and storytelling, and adds features such as vehicles and physics-based gameplay.",
                         ImageUrl = "https://upload.wikimedia.org/wikipedia/en/2/25/Half-Life_2_cover.jpg",
-
+                        Featured = true,
                     },
                     new Product
                     {
@@ -120,6 +121,7 @@
                         Title = "Diablo II",
                         Description = "Diablo II is an action role-playing hack-and-slash computer video game developed by Blizzard North and published by Blizzard Entertainment in 2000 for Microsoft Windows, Classic Mac OS, and macOS.",
                         ImageUrl = "https://upload.wikimedia.org/wikipedia/en/d/d5/Diablo_II_Coverart.png",
+                        Featured = true,
                     },
                     new Product
                     {
@@ -128,7 +130,7 @@
                         Title = "Day of the Tentacle",
                         Description = "Day of the Tentacle, also known as Maniac Mansion II: Day of the Tentacle, is a 1993 graphic adventure game developed and published by LucasArts. It is the sequel to the 1987 game Maniac Mansion.",
                         ImageUrl = "https://upload.wikimedia.org/wikipedia/en/7/79/Day_of_the_Tentacle_artwork.jpg",
-
+                        Featured = true,
                     },
                     new Product
                     {

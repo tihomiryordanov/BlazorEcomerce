@@ -3,7 +3,7 @@
 
 @if (productService.Products==null || productService.Products.Count==0)
 {
-    <span>Loading products....</span>
+    <span>@productService.Message</span>
 }
 else
 {
@@ -23,7 +23,7 @@ else
             <div class="media-body">
                     <a href="/product/@product.Id">
                     <h4 class="mb-0">@product.Title</h4>
-                </a>
+                    </a>
                 <p>
                     @product.Description
                 </p>
@@ -32,6 +32,17 @@ else
         </li>
     }
 </ul>
+@for (int i = 1; i <= productService.PageCount; i++)
+    {
+        <a class="btn
+                  @(i==productService.CurrentPage? "btn-info": "btn-outline-info")
+                  page-selection"
+                  href="/search/@productService.LastSearchText/@i
+        ">
+        @i
+        </a>
+    }
+
 }
 @code {
 
